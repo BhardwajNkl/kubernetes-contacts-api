@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contacts-api-deployment
+  namespace: contacts-api-namespace # Defines the namespace in which the deployment will be created.
+  labels:
+    app: contacts-api
+spec:
+  replicas: 3  # Let's start with 3 instances(pods) of our application.
+  selector:
+    matchLabels:
+      app: contacts-api
+  template:
+    metadata:
+      labels:
+        app: contacts-api
+    spec:
+      containers:
+      - name: contacts-api-container
+        image: bhardwajnkl/contacts-backend-h2:1.0.0  # Docker image of the application
+        resources:
+          requests:
+            memory: "256Mi"  # Minimum memory request
+            cpu: "250m"      # Minimum CPU request
+          limits:
+            memory: "512Mi"  # Upper memory limit
+            cpu: "500m"      # Upper CPU limit
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9090  # Port on which the container listens
