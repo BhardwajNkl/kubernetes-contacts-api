@@ -67,4 +67,16 @@ public class ContactController {
 		contactService.deleteContact(id);
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
+
+	@GetMapping("/live")
+        public ResponseEntity<String> livenessCheck() {
+                log.info("INSIDE LIVENESS CHECK");
+                return new ResponseEntity<>("App is live", HttpStatus.OK);
+        }
+
+	@GetMapping("/ready")
+        public ResponseEntity<String> readinessCheck() {
+                log.info("INSIDE READINESS CHECK");
+                return new ResponseEntity<>("App is ready for service", HttpStatus.OK);
+        }
 }

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: contacts-api-container
-        image: bhardwajnkl/contacts-backend-h2:1.0.0  # Docker image of the application
+        image: bhardwajnkl/contacts-backend-h2:1.0.1  # Docker image of the application
         resources:
           requests:
             memory: "256Mi"  # Minimum memory request
@@ -28,3 +28,18 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9090  # Port on which the container listens
+        livenessProbe:
+          httpGet:
+            path: /api/contacts/live
+            port: 9090
+          initialDelaySeconds: 90   # Liveness probe starts after 90 seconds. The app takes around 1 minute to launch.
+          periodSeconds: 5          # Liveness check is done every 5 seconds.
+          timeoutSeconds: 3         # If the liveness check endpoint does not respond for 3 seconds, we consider it a failure.
+          failureThreshold: 3       # If we get 3 consecutive failures, only then that pod will be restarted.
+        readinessProbe:
+          httpGet:
+            path: /api/contacts/ready
+            port: 9090
+          initialDelaySeconds: 60  # Readiness probe starts after 90 seconds.
+          periodSeconds: 3         # Readiness check is done every 3 second until the app is marked ready.
+          timeoutSeconds: 3        # If the readiness check endpoint does not respond for 3 seconds, we consider it a failure.
