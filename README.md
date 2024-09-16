@@ -41,7 +41,7 @@ kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 ```
 This does the following:
-- Create a deployment that uses the public Docker image [bhardwajnkl/contacts-backend-h2:1.0.0] from Docker Hub.
+- Create a deployment that uses the public Docker image [bhardwajnkl/contacts-backend-h2:1.0.1] from Docker Hub.
 - Create a Kubernetes service that exposes the application.
 
 ### Step 5: Expose the Service
