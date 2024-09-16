@@ -62,8 +62,8 @@ kubectl get services -n contacts-api-namespace
 
 Look for the EXTERNAL-IP and PORT(s). The external IP should be 127.0.0.1 and port 9090.
 
-Now, you can access the Appliation. For API documentation go to: http://127.0.0.1:9090/swagger-ui/index.html
-**IF THE PAGE DOES NOT LOAD, PLEASE WAIT FOR 1-2 MINUTE. AND REFRESH**
+Now, you can access the Appliation. For API documentation go to: http://127.0.0.1:9090/swagger-ui/index.html .
+**IF THE PAGE DOES NOT LOAD, PLEASE WAIT FOR 1-2 MINUTE. AND REFRESH.**
 
 You can try the API directly from this page or you may use tools such as Postman, Curl to interact with the APIs.
 
