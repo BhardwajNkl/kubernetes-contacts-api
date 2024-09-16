@@ -57,7 +57,7 @@ If you have correctly followed the above steps and deployment is up and service 
 
 To find the external IP, use:
 ```bash
-kubect get services -n contacts-api-namespace
+kubectl get services -n contacts-api-namespace
 ```
 
 Look for the EXTERNAL-IP and PORT(s). The external IP should be 127.0.0.1 and port 9090.
